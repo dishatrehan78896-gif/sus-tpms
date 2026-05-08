@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SUS TPMS">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favicon Generator - SUS Premium TPMS</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Sleek Black Transparent Modern Theme */
+        :root {
+            --black-primary: #0a0a0a;
+            --black-secondary: #1a1a1a;
+            --black-tertiary: #2a2a2a;
+            --accent-glow: rgba(255, 255, 255, 0.1);
+            --accent-primary: #ffffff;
+            --accent-secondary: #e0e0e0;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-muted: #808080;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --neon-blue: #3b82f6;
+        }
+
+        body {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, var(--black-primary) 0%, var(--black-secondary) 50%, var(--black-primary) 100%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 60px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, transparent 49%, var(--accent-glow) 50%, transparent 51%),
+                linear-gradient(-45deg, transparent 49%, var(--accent-glow) 50%, transparent 51%);
+            background-size: 60px 60px;
+            animation: gridMove 40s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 60px 60px; }
+        }
+
+        .modern-header {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .modern-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(59, 130, 246, 0.2), 
+                transparent);
+            animation: headerShine 6s infinite;
+        }
+
+        @keyframes headerShine {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 3rem;
+        }
+
+        .logo-main {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .logo-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+
+        .modern-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 3rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .modern-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--neon-blue), 
+                transparent);
+        }
+
+        .modern-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .favicon-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .favicon-size {
+            text-align: center;
+        }
+
+        .favicon-box {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .favicon-box:hover {
+            transform: scale(1.05);
+        }
+
+        .size-label {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-top: 0.8rem;
+            font-weight: 500;
+        }
+
+        .favicon-svg {
+            display: block;
+        }
+
+        .code-section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            text-align: left;
+            overflow-x: auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .code-title {
+            color: var(--neon-blue);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        pre {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        }
+
+        .comment {
+            color: var(--text-muted);
+        }
+
+        .tag {
+            color: #ef4444;
+        }
+
+        .attribute {
+            color: var(--neon-blue);
+        }
+
+        .value {
+            color: #10b981;
+        }
+
+        .instructions {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            text-align: left;
+            backdrop-filter: blur(10px);
+        }
+
+        .instructions h3 {
+            color: var(--neon-blue);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .instructions ol {
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .instructions li {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .modern-btn {
+            background: linear-gradient(135deg, var(--neon-blue), #1d4ed8);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            margin: 0.5rem;
+        }
+
+        .modern-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.2), 
+                transparent);
+            transition: left 0.5s ease;
+        }
+
+        .modern-btn:hover::before {
+            left: 100%;
+        }
+
+        .modern-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #6b7280, #4b5563);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success), #059669);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .logo-container:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .logo-symbol {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--neon-blue), #1d4ed8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main-small {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+        }
+
+        .logo-subtitle-small {
+            font-family: 'Inter', sans-serif;
+            font-size: 8px;
+            color: var(--neon-blue);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .favicon-container {
+                gap: 30px;
+            }
+            
+            .modern-card {
+                padding: 2rem;
+            }
+            
+            .code-section, .instructions {
+                padding: 2rem;
+            }
+            
+            .logo-main {
+                font-size: 2.5rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-glow);
+        }
+    </style>
+</head>
+<body>
+    <header class="modern-header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Modern Logo -->
+                <a href="index.php" class="logo-container">
+                    <div class="logo-symbol">
+                        <div style="width: 24px; height: 24px; background: var(--black-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <div style="width: 12px; height: 12px; background: linear-gradient(135deg, var(--neon-blue), #1d4ed8); border-radius: 50%;"></div>
+                        </div>
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-main-small">SUS</div>
+                        <div class="logo-subtitle-small">PREMIUM TPMS</div>
+                    </div>
+                </a>
+
+                <nav>
+                    <ul>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="dashboard.php">Dashboard</a></li>
+                        <li><a href="tire-health.php">Tire Health</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="auth-buttons">
+                    <a href="login.php" class="modern-btn" style="padding: 10px 20px; font-size: 0.9rem;">
+                        <i class="fas fa-sign-in-alt"></i>Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="logo-main">SUS Premium TPMS</h1>
+            <p class="logo-subtitle">Favicon Generator & Implementation Guide</p>
+        </div>
+
+        <div class="modern-card">
+            <h2 style="color: var(--neon-blue); margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; gap: 15px;">
+                <i class="fas fa-icons"></i>Web Application Favicon
+            </h2>
+            
+            <div class="favicon-container">
+                <div class="favicon-size">
+                    <div class="favicon-box">
+                        <!-- 16x16 Favicon -->
+                        <svg width="16" height="16" viewBox="0 0 16 16" class="favicon-svg">
+                            <circle cx="8" cy="8" r="7" fill="#3b82f6" stroke="#0a0a0a" stroke-width="1"/>
+                            <circle cx="8" cy="8" r="3" fill="#0a0a0a"/>
+                            <circle cx="8" cy="8" r="1.5" fill="#3b82f6"/>
+                        </svg>
+                    </div>
+                    <div class="size-label">16×16 (Favicon)</div>
+                </div>
+
+                <div class="favicon-size">
+                    <div class="favicon-box">
+                        <!-- 32x32 Favicon -->
+                        <svg width="32" height="32" viewBox="0 0 32 32" class="favicon-svg">
+                            <circle cx="16" cy="16" r="14" fill="#3b82f6" stroke="#0a0a0a" stroke-width="2"/>
+                            <circle cx="16" cy="16" r="8" fill="#0a0a0a"/>
+                            <circle cx="16" cy="16" r="4" fill="#3b82f6"/>
+                            <circle cx="16" cy="16" r="2" fill="#0a0a0a"/>
+                        </svg>
+                    </div>
+                    <div class="size-label">32×32</div>
+                </div>
+
+                <div class="favicon-size">
+                    <div class="favicon-box">
+                        <!-- 180x180 Apple Touch Icon -->
+                        <svg width="64" height="64" viewBox="0 0 64 64" class="favicon-svg">
+                            <circle cx="32" cy="32" r="28" fill="#3b82f6" stroke="#0a0a0a" stroke-width="2"/>
+                            <circle cx="32" cy="32" r="18" fill="#0a0a0a"/>
+                            <circle cx="32" cy="32" r="10" fill="#3b82f6"/>
+                            <circle cx="32" cy="32" r="5" fill="#0a0a0a"/>
+                            <circle cx="32" cy="32" r="2" fill="#3b82f6"/>
+                        </svg>
+                    </div>
+                    <div class="size-label">180×180 (Apple)</div>
+                </div>
+            </div>
+
+            <p style="color: var(--text-secondary); margin-top: 2rem; font-size: 1rem; line-height: 1.6;">
+                The favicon represents tire pressure monitoring with concentric circles symbolizing<br>
+                tires and pressure measurement in SUS blue (#3b82f6) and modern black (#0a0a0a) colors.
+            </p>
+        </div>
+
+        <div class="modern-card">
+            <h3 class="code-title">
+                <i class="fas fa-code"></i>HTML Implementation Code
+            </h3>
+            <div class="code-section">
+                <pre><code><span class="comment">&lt;!-- Add this to the &lt;head&gt; section of ALL your PHP files --&gt;</span>
+<span class="tag">&lt;link</span> <span class="attribute">rel</span>=<span class="value">"icon"</span> <span class="attribute">type</span>=<span class="value">"image/svg+xml"</span> <span class="attribute">href</span>=<span class="value">"data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'&gt;&lt;circle cx='8' cy='8' r='7' fill='%233b82f6' stroke='%230a0a0a' stroke-width='1'/&gt;&lt;circle cx='8' cy='8' r='3' fill='%230a0a0a'/&gt;&lt;circle cx='8' cy='8' r='1.5' fill='%233b82f6'/&gt;&lt;/svg&gt;"</span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;link</span> <span class="attribute">rel</span>=<span class="value">"apple-touch-icon"</span> <span class="attribute">sizes</span>=<span class="value">"180x180"</span> <span class="attribute">href</span>=<span class="value">"data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'&gt;&lt;circle cx='90' cy='90' r='85' fill='%233b82f6' stroke='%230a0a0a' stroke-width='3'/&gt;&lt;circle cx='90' cy='90' r='50' fill='%230a0a0a'/&gt;&lt;circle cx='90' cy='90' r='25' fill='%233b82f6'/&gt;&lt;circle cx='90' cy='90' r='12' fill='%230a0a0a'/&gt;&lt;circle cx='90' cy='90' r='6' fill='%233b82f6'/&gt;&lt;/svg&gt;"</span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;link</span> <span class="attribute">rel</span>=<span class="value">"icon"</span> <span class="attribute">type</span>=<span class="value">"image/png"</span> <span class="attribute">sizes</span>=<span class="value">"32x32"</span> <span class="attribute">href</span>=<span class="value">"data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'&gt;&lt;circle cx='16' cy='16' r='14' fill='%233b82f6' stroke='%230a0a0a' stroke-width='2'/&gt;&lt;circle cx='16' cy='16' r='8' fill='%230a0a0a'/&gt;&lt;circle cx='16' cy='16' r='4' fill='%233b82f6'/&gt;&lt;circle cx='16' cy='16' r='2' fill='%230a0a0a'/&gt;&lt;/svg&gt;"</span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;link</span> <span class="attribute">rel</span>=<span class="value">"icon"</span> <span class="attribute">type</span>=<span class="value">"image/png"</span> <span class="attribute">sizes</span>=<span class="value">"16x16"</span> <span class="attribute">href</span>=<span class="value">"data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'&gt;&lt;circle cx='8' cy='8' r='7' fill='%233b82f6' stroke='%230a0a0a' stroke-width='1'/&gt;&lt;circle cx='8' cy='8' r='3' fill='%230a0a0a'/&gt;&lt;circle cx='8' cy='8' r='1.5' fill='%233b82f6'/&gt;&lt;/svg&gt;"</span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;meta</span> <span class="attribute">name</span>=<span class="value">"theme-color"</span> <span class="attribute">content</span>=<span class="value">"#0a0a0a"</span><span class="tag">&gt;</span></code></pre>
+            </div>
+        </div>
+
+        <div class="modern-card">
+            <h3 class="code-title">
+                <i class="fas fa-list-check"></i>Implementation Instructions
+            </h3>
+            <div class="instructions">
+                <ol>
+                    <li><strong>Copy the HTML code</strong> above using the "Copy HTML Code" button</li>
+                    <li><strong>Paste the code</strong> into the <code>&lt;head&gt;</code> section of all your PHP files (index.php, dashboard.php, login.php, signup.php, etc.)</li>
+                    <li><strong>Replace existing favicon code</strong> if you have any previous implementations</li>
+                    <li><strong>Test the favicon</strong> by refreshing your pages and checking browser tabs</li>
+                    <li><strong>Clear browser cache</strong> if the favicon doesn't appear immediately</li>
+                </ol>
+                <p style="color: var(--text-secondary); margin-top: 1.5rem; font-style: italic;">
+                    The favicon uses SVG data URIs for optimal performance and crisp display on all devices.
+                </p>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="index.php" class="modern-btn">
+                <i class="fas fa-arrow-left"></i>Back to Application
+            </a>
+            <button onclick="copyCode()" class="modern-btn btn-success">
+                <i class="fas fa-copy"></i>Copy HTML Code
+            </button>
+            <a href="dashboard.php" class="modern-btn btn-secondary">
+                <i class="fas fa-gauge-high"></i>Go to Dashboard
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.modern-header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
+                header.style.backdropFilter = 'blur(30px) saturate(200%)';
+            } else {
+                header.style.background = 'rgba(10, 10, 10, 0.8)';
+                header.style.backdropFilter = 'blur(20px) saturate(180%)';
+            }
+        });
+
+        function copyCode() {
+            const code = `<!-- Add this to the <head> section of ALL your PHP files -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='7' fill='%233b82f6' stroke='%230a0a0a' stroke-width='1'/><circle cx='8' cy='8' r='3' fill='%230a0a0a'/><circle cx='8' cy='8' r='1.5' fill='%233b82f6'/></svg>">
+
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><circle cx='90' cy='90' r='85' fill='%233b82f6' stroke='%230a0a0a' stroke-width='3'/><circle cx='90' cy='90' r='50' fill='%230a0a0a'/><circle cx='90' cy='90' r='25' fill='%233b82f6'/><circle cx='90' cy='90' r='12' fill='%230a0a0a'/><circle cx='90' cy='90' r='6' fill='%233b82f6'/></svg>">
+
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%233b82f6' stroke='%230a0a0a' stroke-width='2'/><circle cx='16' cy='16' r='8' fill='%230a0a0a'/><circle cx='16' cy='16' r='4' fill='%233b82f6'/><circle cx='16' cy='16' r='2' fill='%230a0a0a'/></svg>">
+
+<link rel="icon" type="image/png" sizes="16x16" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='7' fill='%233b82f6' stroke='%230a0a0a' stroke-width='1'/><circle cx='8' cy='8' r='3' fill='%230a0a0a'/><circle cx='8' cy='8' r='1.5' fill='%233b82f6'/></svg>">
+
+<meta name="theme-color" content="#0a0a0a">`;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                alert('HTML code copied to clipboard! Paste it in the <head> section of your PHP files.');
+            }).catch(err => {
+                console.error('Failed to copy code: ', err);
+                alert('Failed to copy code. Please select and copy manually.');
+            });
+        }
+
+        // Add interactive card effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.modern-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const angleX = (y - centerY) / 20;
+                    const angleY = (centerX - x) / 20;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-8px)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
