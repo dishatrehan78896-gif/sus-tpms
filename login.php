@@ -15,9 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         if ($result->num_rows == 1) {
             $user = $result->fetch_assoc();
-            
-            // In a real application, you should use password_verify()
-            // For demo purposes, we're using a simple comparison
             if ($password === $user['Password']) {
                 $_SESSION['user_id'] = $user['ID'];
                 $_SESSION['username'] = $user['Username'];
@@ -52,7 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Sleek Black Transparent Modern Theme */
         :root {
             --black-primary: #0a0a0a;
             --black-secondary: #1a1a1a;
@@ -415,7 +411,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <header class="modern-header">
         <div class="container">
             <div class="header-content">
-                <!-- Modern Logo -->
                 <a href="index.php" class="logo-container">
                     <div class="logo-symbol">
                         <div style="width: 24px; height: 24px; background: var(--black-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
@@ -483,7 +478,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <script>
-        // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.modern-header');
             if (window.scrollY > 50) {
@@ -494,13 +488,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 header.style.backdropFilter = 'blur(20px) saturate(180%)';
             }
         });
-
-        // Add interactive form effects
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.querySelector('.modern-form');
             const inputs = document.querySelectorAll('.form-input');
             
-            // Form 3D effect on mousemove
             form.addEventListener('mousemove', (e) => {
                 const rect = form.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -519,7 +510,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 form.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
             });
 
-            // Input focus effects
             inputs.forEach(input => {
                 input.addEventListener('focus', function() {
                     this.parentElement.style.transform = 'translateY(-2px)';
