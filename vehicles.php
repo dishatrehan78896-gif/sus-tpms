@@ -1,12 +1,9 @@
 <?php
 require_once 'config.php';
 requireLogin();
-
 $user_id = $_SESSION['user_id'];
 $vehicles = [];
 $current_vehicle = null;
-
-// Fetch user's vehicles
 $stmt = $conn->prepare("SELECT * FROM vehicles WHERE user_id = ? ORDER BY created_at DESC");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -16,12 +13,8 @@ while ($row = $result->fetch_assoc()) {
     $vehicles[] = $row;
 }
 $stmt->close();
-
-// Get current vehicle data if available
 if (!empty($vehicles)) {
     $current_vehicle = $vehicles[0];
-    
-    // Get latest tire data for current vehicle
     $stmt = $conn->prepare("SELECT * FROM tire_data WHERE user_id = ? AND vehicle_id = ? ORDER BY timestamp DESC LIMIT 1");
     $stmt->bind_param("ii", $user_id, $current_vehicle['id']);
     $stmt->execute();
@@ -39,7 +32,6 @@ if (!empty($vehicles)) {
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* PC Optimized Styles */
         .vehicles-container {
             display: grid;
             grid-template-columns: 300px 1fr;
@@ -162,8 +154,6 @@ if (!empty($vehicles)) {
             background: rgba(255, 255, 255, 0.05);
             transform: translateX(5px);
         }
-        
-        /* Modal styles - PC optimized */
         .modal {
             display: none;
             position: fixed;
@@ -189,8 +179,6 @@ if (!empty($vehicles)) {
             overflow-y: auto;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
-        
-        /* Hover effects for PC */
         .vehicle-actions {
             opacity: 0;
             transition: all 0.3s ease;
@@ -199,8 +187,6 @@ if (!empty($vehicles)) {
         .vehicle-card:hover .vehicle-actions {
             opacity: 1;
         }
-        
-        /* PC-specific animations */
         @media (min-width: 1024px) {
             .vehicle-card {
                 position: relative;
@@ -222,8 +208,6 @@ if (!empty($vehicles)) {
                 left: 100%;
             }
         }
-        
-        /* Mobile adjustments */
         @media (max-width: 1024px) {
             .vehicles-container {
                 grid-template-columns: 1fr;
@@ -260,7 +244,6 @@ if (!empty($vehicles)) {
             }
         }
         
-        /* Enhanced form styles for PC */
         .form-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -270,8 +253,6 @@ if (!empty($vehicles)) {
         .form-full-width {
             grid-column: 1 / -1;
         }
-        
-        /* Status indicators */
         .status-badge {
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
@@ -330,7 +311,6 @@ if (!empty($vehicles)) {
             </div>
         </div>
     </header>
-    <!-- Add Vehicle Modal -->
     <div id="addVehicleModal" class="modal">
         <div class="modal-content">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
@@ -388,7 +368,6 @@ if (!empty($vehicles)) {
     </div>
 
     <script>
-        // Modal functions
         function showAddVehicleModal() {
             document.getElementById('addVehicleModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -409,42 +388,30 @@ if (!empty($vehicles)) {
         
         function editVehicle(vehicleId) {
             alert('Edit vehicle: ' + vehicleId);
-            // Implement edit functionality
         }
         
         function deleteVehicle(vehicleId) {
             if (confirm('Are you sure you want to delete this vehicle? This action cannot be undone.')) {
                 alert('Vehicle ' + vehicleId + ' would be deleted');
-                // Implement delete functionality
             }
         }
-        
-        // Close modal when clicking outside
         document.getElementById('addVehicleModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 hideAddVehicleModal();
             }
         });
-        
-        // Form submission
         document.getElementById('addVehicleForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Here you would typically send the data to your server
             alert('Vehicle added successfully!');
             hideAddVehicleModal();
-            // Reload the page to show the new vehicle
             setTimeout(() => location.reload(), 1000);
         });
-        
-        // Keyboard shortcuts for PC
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.key === 'n') {
                 e.preventDefault();
                 showAddVehicleModal();
             }
         });
-        
-        // Enhanced hover effects for PC
         document.querySelectorAll('.vehicle-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.zIndex = '10';
