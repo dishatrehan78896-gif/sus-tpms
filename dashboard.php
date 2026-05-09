@@ -2,7 +2,7 @@
 require_once 'config.php';
 requireLogin();
 
-// Fetch user's tire data
+
 $user_id = $_SESSION['user_id'];
 $tire_data = [];
 
@@ -41,7 +41,6 @@ $stmt->close();
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Sleek Black Transparent Modern Theme */
         :root {
             --black-primary: #0a0a0a;
             --black-secondary: #1a1a1a;
@@ -377,9 +376,8 @@ $stmt->close();
             </div>
         </div>
 
-        <!-- Main Grid -->
+       
         <div class="dashboard-grid">
-            <!-- Vehicle Status -->
             <div class="modern-card" onclick="showVehicleDetails()" style="cursor: pointer;">
                 <h3 class="flex items-center gap-2" style="margin-bottom: 1.5rem;">
                     <i class="fas fa-car-side" style="color: var(--neon-blue);"></i> Vehicle Status
@@ -405,7 +403,6 @@ $stmt->close();
                 </div>
             </div>
 
-            <!-- Overall Health -->
             <div class="modern-card" onclick="showHealthReport()" style="cursor: pointer;">
                 <h3 class="flex items-center gap-2" style="margin-bottom: 1.5rem;">
                     <i class="fas fa-heart-pulse" style="color: var(--neon-blue);"></i> Overall Health
@@ -452,8 +449,6 @@ $stmt->close();
                     </button>
                 </div>
             </div>
-
-            <!-- System Alerts -->
             <div class="modern-card" onclick="showAlerts()" style="cursor: pointer;">
                 <h3 class="flex items-center gap-2" style="margin-bottom: 1.5rem;">
                     <i class="fas fa-triangle-exclamation" style="color: var(--neon-blue);"></i> System Alerts
@@ -510,8 +505,6 @@ $stmt->close();
                     </button>
                 </div>
             </div>
-
-            <!-- Quick Stats -->
             <div class="modern-card" onclick="showStatistics()" style="cursor: pointer;">
                 <h3 class="flex items-center gap-2" style="margin-bottom: 1.5rem;">
                     <i class="fas fa-tachometer-alt" style="color: var(--neon-blue);"></i> Quick Stats
@@ -541,8 +534,6 @@ $stmt->close();
                 </div>
             </div>
         </div>
-
-        <!-- Detailed Tire Analysis -->
         <div class="modern-card main-display">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
                 <h3 class="flex items-center gap-2">
@@ -596,42 +587,38 @@ $stmt->close();
     </div>
 </section>
 
-<!-- JavaScript for Interactive Functions -->
+
 <script>
-// Vehicle Status Functions
 function showVehicleDetails() {
     alert('Showing vehicle details...');
-    // window.location.href = 'vehicle-details.php';
 }
 
 function showHealthReport() {
     alert('Generating health report...');
-    // window.location.href = 'health-report.php';
 }
 
 function showAlerts() {
     alert('Showing all alerts...');
-    // window.location.href = 'alerts.php';
+    
 }
 
 function showStatistics() {
     alert('Showing detailed statistics...');
-    // window.location.href = 'statistics.php';
+   
 }
 
 function showTireDetails(position) {
     alert('Showing details for ' + position + ' tire');
-    // window.location.href = 'tire-details.php?position=' + position;
+   
 }
 
 function refreshData() {
-    // Show loading state
+   
     const btn = event.target;
     const originalText = btn.innerHTML;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
     btn.disabled = true;
     
-    // Simulate API call
     setTimeout(() => {
         location.reload();
     }, 1500);
@@ -639,12 +626,11 @@ function refreshData() {
 
 function exportTireData() {
     alert('Exporting tire data to CSV...');
-    // Implement CSV export functionality
 }
 
-// Add hover effects
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Make cards clickable with visual feedback
+  
     const cards = document.querySelectorAll('.modern-card');
     cards.forEach(card => {
         card.addEventListener('click', function() {
@@ -657,7 +643,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
     <script>
-        // Header scroll effect
+       
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.modern-header');
             if (window.scrollY > 100) {
@@ -669,7 +655,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Add interactive card effects
+       
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.modern-card');
             cards.forEach(card => {
@@ -694,7 +680,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     </script>
 	<script>
-// Voice Assistant Class
+
 class VoiceAssistant {
     constructor() {
         this.isListening = false;
@@ -743,10 +729,8 @@ class VoiceAssistant {
     processCommand(transcript) {
         console.log('Voice command:', transcript);
         
-        // Get current tire data from the page
         const tireData = this.getCurrentTireData();
         
-        // Process different command types
         if (transcript.includes('pressure') || transcript.includes('psi')) {
             this.handlePressureQuery(transcript, tireData);
         }
@@ -779,7 +763,6 @@ class VoiceAssistant {
             const data = {};
             
             tireElements.forEach((tire, index) => {
-                // Look for pressure value (usually the large number)
                 const pressureElement = tire.querySelector('.stat-number') || tire.querySelector('div[style*="color: var(--neon-blue)"]') || tire.querySelector('div:first-child');
                 const tempElement = tire.querySelector('div[style*="temperature"]') || tire.querySelector('div:last-child');
                 
@@ -950,7 +933,6 @@ class VoiceAssistant {
     }
 }
 
-// Initialize Voice Assistant
 let voiceAssistant;
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -970,7 +952,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <script>
 <script>
-// Register Service Worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register('/service-worker.js')
@@ -983,17 +964,11 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Check if app is installed
 window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent the mini-infobar from appearing on mobile
     e.preventDefault();
-    // Stash the event so it can be triggered later
     deferredPrompt = e;
-    // Show install button
     showInstallPromotion();
 });
-
-// Online/Offline detection
 window.addEventListener('online', function() {
     document.body.classList.remove('offline');
     showNotification('Connection restored', 'success');
@@ -1005,7 +980,6 @@ window.addEventListener('offline', function() {
 });
 
 function showNotification(message, type) {
-    // Create a notification element
     const notification = document.createElement('div');
     notification.style.cssText = `
         position: fixed;
@@ -1027,7 +1001,6 @@ function showNotification(message, type) {
 }
 </script>
 <script>
-// Register Service Worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register('/service-worker.js')
@@ -1040,17 +1013,12 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Check if app is installed
 window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent the mini-infobar from appearing on mobile
     e.preventDefault();
-    // Stash the event so it can be triggered later
     deferredPrompt = e;
-    // Show install button
     showInstallPromotion();
 });
 
-// Online/Offline detection
 window.addEventListener('online', function() {
     document.body.classList.remove('offline');
     showNotification('Connection restored', 'success');
@@ -1062,7 +1030,7 @@ window.addEventListener('offline', function() {
 });
 
 function showNotification(message, type) {
-    // Create a notification element
+    
     const notification = document.createElement('div');
     notification.style.cssText = `
         position: fixed;
@@ -1083,7 +1051,6 @@ function showNotification(message, type) {
     }, 3000);
 }
 </script><script>
-// Register Service Worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register('/service-worker.js')
@@ -1096,17 +1063,12 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Check if app is installed
+
 window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent the mini-infobar from appearing on mobile
     e.preventDefault();
-    // Stash the event so it can be triggered later
     deferredPrompt = e;
-    // Show install button
     showInstallPromotion();
 });
-
-// Online/Offline detection
 window.addEventListener('online', function() {
     document.body.classList.remove('offline');
     showNotification('Connection restored', 'success');
@@ -1118,7 +1080,7 @@ window.addEventListener('offline', function() {
 });
 
 function showNotification(message, type) {
-    // Create a notification element
+   
     const notification = document.createElement('div');
     notification.style.cssText = `
         position: fixed;
@@ -1140,7 +1102,6 @@ function showNotification(message, type) {
 }
 </script>
 <script>
-// Register Service Worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register('/service-worker.js')
@@ -1153,17 +1114,15 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Check if app is installed
 window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent the mini-infobar from appearing on mobile
+    
     e.preventDefault();
-    // Stash the event so it can be triggered later
+    
     deferredPrompt = e;
-    // Show install button
+    
     showInstallPromotion();
 });
 
-// Online/Offline detection
 window.addEventListener('online', function() {
     document.body.classList.remove('offline');
     showNotification('Connection restored', 'success');
@@ -1175,7 +1134,6 @@ window.addEventListener('offline', function() {
 });
 
 function showNotification(message, type) {
-    // Create a notification element
     const notification = document.createElement('div');
     notification.style.cssText = `
         position: fixed;
@@ -1197,7 +1155,6 @@ function showNotification(message, type) {
 }
 </script>
 <script>
-// Mobile menu functionality
 function toggleMobileMenu() {
     const nav = document.getElementById('mainNav');
     const btn = document.getElementById('mobileMenuBtn');
@@ -1211,7 +1168,6 @@ function toggleMobileMenu() {
     }
 }
 
-// Close menu when clicking outside
 document.addEventListener('click', function(event) {
     const nav = document.getElementById('mainNav');
     const btn = document.getElementById('mobileMenuBtn');
@@ -1222,17 +1178,13 @@ document.addEventListener('click', function(event) {
     }
 });
 
-// Touch device detection
 function isTouchDevice() {
     return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 }
 
-// Add touch-specific classes
 if (isTouchDevice()) {
     document.body.classList.add('touch-device');
 }
-
-// Prevent zoom on double tap
 let lastTouchEnd = 0;
 document.addEventListener('touchend', function (event) {
     const now = (new Date()).getTime();
@@ -1242,7 +1194,6 @@ document.addEventListener('touchend', function (event) {
     lastTouchEnd = now;
 }, false);
 
-// Responsive font size adjustment
 function adjustFontSize() {
     const width = window.innerWidth;
     if (width < 768) {
@@ -1253,9 +1204,8 @@ function adjustFontSize() {
 }
 
 window.addEventListener('resize', adjustFontSize);
-adjustFontSize(); // Initial call
+adjustFontSize(); 
 
-// Mobile swipe gestures for tires
 let startX = null;
 
 document.addEventListener('touchstart', (e) => {
@@ -1268,12 +1218,10 @@ document.addEventListener('touchend', (e) => {
     const endX = e.changedTouches[0].clientX;
     const diffX = startX - endX;
     
-    if (Math.abs(diffX) > 50) { // Minimum swipe distance
+    if (Math.abs(diffX) > 50) { 
         if (diffX > 0) {
-            // Swipe left - next action
             console.log('Swiped left');
         } else {
-            // Swipe right - previous action  
             console.log('Swiped right');
         }
     }
