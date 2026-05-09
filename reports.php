@@ -1,12 +1,9 @@
 <?php
 require_once 'config.php';
 requireLogin();
-
 $user_id = $_SESSION['user_id'];
 $report_type = $_GET['type'] ?? 'weekly';
 $vehicle_id = $_GET['vehicle'] ?? null;
-
-// Fetch user's vehicles for dropdown
 $vehicles = [];
 $stmt = $conn->prepare("SELECT id, make, model, license_plate FROM vehicles WHERE user_id = ?");
 $stmt->bind_param("i", $user_id);
@@ -16,8 +13,6 @@ while ($row = $result->fetch_assoc()) {
     $vehicles[] = $row;
 }
 $stmt->close();
-
-// Generate sample report data
 function generateReportData($type, $vehicle_id = null) {
     $periods = [
         'weekly' => ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -77,7 +72,6 @@ $report_data = generateReportData($report_type, $vehicle_id);
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* PC Optimized Report Styles */
         .reports-container {
             display: grid;
             grid-template-columns: 250px 1fr;
@@ -233,7 +227,7 @@ $report_data = generateReportData($report_type, $vehicle_id);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
-        /* Comparison metrics */
+   
         .comparison-metrics {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
