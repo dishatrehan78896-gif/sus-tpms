@@ -15,8 +15,6 @@ const urlsToCache = [
     'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
     'https://cdn.jsdelivr.net/npm/chart.js'
 ];
-
-// Install event - cache files
 self.addEventListener('install', event => {
     console.log('Service Worker: Installed');
     event.waitUntil(
@@ -28,8 +26,6 @@ self.addEventListener('install', event => {
             .then(() => self.skipWaiting())
     );
 });
-
-// Activate event - clean up old caches
 self.addEventListener('activate', event => {
     console.log('Service Worker: Activated');
     event.waitUntil(
@@ -45,38 +41,31 @@ self.addEventListener('activate', event => {
         })
     );
 });
-
-// Fetch event - serve cached content when offline
 self.addEventListener('fetch', event => {
     console.log('Service Worker: Fetching');
     event.respondWith(
         fetch(event.request)
             .then(response => {
-                // Make copy/clone of response
                 const resClone = response.clone();
-                // Open cache
                 caches.open(CACHE_NAME)
                     .then(cache => {
-                        // Add response to cache
+                        
                         cache.put(event.request, resClone);
                     });
                 return response;
             })
             .catch(err => {
-                // If network fails, serve from cache
                 return caches.match(event.request)
                     .then(response => {
                         if (response) {
                             return response;
                         }
-                        // If not in cache, show offline page
+                    
                         return caches.match('/offline.html');
                     });
             })
     );
 });
-
-// Background sync for offline data
 self.addEventListener('sync', event => {
     if (event.tag === 'background-sync') {
         console.log('Service Worker: Background Sync');
