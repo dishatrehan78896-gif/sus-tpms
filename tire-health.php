@@ -4,8 +4,6 @@ requireLogin();
 
 $user_id = $_SESSION['user_id'];
 $tire_data = [];
-
-// Fetch all tire data for the user
 $stmt = $conn->prepare("SELECT * FROM tire_data WHERE user_id = ? ORDER BY timestamp DESC");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -33,7 +31,6 @@ $stmt->close();
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* Sleek Black Transparent Modern Theme */
         :root {
             --black-primary: #0a0a0a;
             --black-secondary: #1a1a1a;
@@ -359,8 +356,6 @@ $stmt->close();
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.7; transform: scale(1.2); }
         }
-
-        /* Scrollbar Styling */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -492,14 +487,12 @@ $stmt->close();
     </style>
 </head>
 <body>
-<!-- Mobile-Optimized Charts Section -->
 <div class="modern-card main-display">
     <h3 style="color: var(--text-primary); margin-bottom: 25px; display: flex; align-items: center; gap: 10px;">
         <i class="fas fa-chart-line" style="color: var(--neon-blue);"></i> Analytics
     </h3>
     
     <div class="dashboard-grid">
-        <!-- Pressure Trends Card -->
         <div class="modern-card">
             <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
                 <i class="fas fa-gauge-high" style="color: var(--neon-blue);"></i> Pressure Trends
@@ -514,8 +507,6 @@ $stmt->close();
                 </div>
             </div>
         </div>
-        
-        <!-- Temperature Card -->
         <div class="modern-card">
             <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
                 <i class="fas fa-thermometer-half" style="color: var(--success);"></i> Temperature
@@ -530,8 +521,6 @@ $stmt->close();
                 </div>
             </div>
         </div>
-        
-        <!-- Tire Wear Card -->
         <div class="modern-card">
             <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
                 <i class="fas fa-road" style="color: var(--warning);"></i> Tire Wear
@@ -546,8 +535,6 @@ $stmt->close();
                 </div>
             </div>
         </div>
-        
-        <!-- Health Score Card -->
         <div class="modern-card">
             <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
                 <i class="fas fa-heart-pulse" style="color: var(--danger);"></i> Health Score
@@ -616,8 +603,6 @@ $stmt->close();
                     </a>
                 </div>
             </div>
-
-            <!-- Time Filter -->
             <div class="time-filter">
                 <button class="time-filter-btn active">Last 24 Hours</button>
                 <button class="time-filter-btn">Last 7 Days</button>
@@ -626,7 +611,6 @@ $stmt->close();
             </div>
 
             <div class="dashboard-grid">
-                <!-- Overall Statistics -->
                 <div class="modern-card">
                     <h3 style="color: var(--text-primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
                         <i class="fas fa-chart-bar" style="color: var(--neon-blue);"></i> Overall Statistics
@@ -655,8 +639,6 @@ $stmt->close();
                         </p>
                     <?php endif; ?>
                 </div>
-
-                <!-- Health Score -->
                 <div class="modern-card">
                     <h3 style="color: var(--text-primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
                         <i class="fas fa-heart-pulse" style="color: var(--neon-blue);"></i> Health Score
@@ -676,8 +658,6 @@ $stmt->close();
                         </p>
                     <?php endif; ?>
                 </div>
-
-                <!-- Data Points -->
                 <div class="modern-card">
                     <h3 style="color: var(--text-primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
                         <i class="fas fa-database" style="color: var(--neon-blue);"></i> Data Collection
@@ -688,8 +668,6 @@ $stmt->close();
                     </div>
                 </div>
             </div>
-
-            <!-- Charts Section -->
             <div class="modern-card main-display">
                 <h3 style="color: var(--text-primary); margin-bottom: 25px; display: flex; align-items: center; gap: 10px;">
                     <i class="fas fa-chart-line" style="color: var(--neon-blue);"></i> Pressure & Temperature Trends
@@ -698,8 +676,6 @@ $stmt->close();
                     <canvas id="healthChart"></canvas>
                 </div>
             </div>
-
-            <!-- Historical Data Table -->
             <div class="modern-card main-display">
                 <h3 style="color: var(--text-primary); margin-bottom: 25px; display: flex; align-items: center; gap: 10px;">
                     <i class="fas fa-table" style="color: var(--neon-blue);"></i> Historical Data
@@ -753,7 +729,6 @@ $stmt->close();
     </section>
 
     <script>
-        // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.modern-header');
             if (window.scrollY > 100) {
@@ -764,17 +739,13 @@ $stmt->close();
                 header.style.backdropFilter = 'blur(20px) saturate(180%)';
             }
         });
-
-        // Time filter functionality
         document.querySelectorAll('.time-filter-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 document.querySelectorAll('.time-filter-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-                // Here you would typically filter the data based on the selected time range
+            
             });
         });
-
-        // Initialize Chart
         const ctx = document.getElementById('healthChart').getContext('2d');
         const healthChart = new Chart(ctx, {
             type: 'line',
@@ -829,8 +800,6 @@ $stmt->close();
                 }
             }
         });
-
-        // Add interactive card effects
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.modern-card');
             cards.forEach(card => {
@@ -855,9 +824,7 @@ $stmt->close();
         });
     </script>
 	<script>
-// Initialize mobile-optimized charts
 document.addEventListener('DOMContentLoaded', function() {
-    // Pressure Chart
     const pressureCtx = document.getElementById('pressureChart')?.getContext('2d');
     if (pressureCtx) {
         new Chart(pressureCtx, {
@@ -891,8 +858,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
-    // Temperature Chart
     const tempCtx = document.getElementById('temperatureChart')?.getContext('2d');
     if (tempCtx) {
         new Chart(tempCtx, {
@@ -919,8 +884,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
-    // Wear Chart
     const wearCtx = document.getElementById('wearChart')?.getContext('2d');
     if (wearCtx) {
         new Chart(wearCtx, {
