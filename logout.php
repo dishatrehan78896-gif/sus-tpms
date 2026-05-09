@@ -1,10 +1,6 @@
 <?php
 require_once 'config.php';
-
-// Destroy all session data
 $_SESSION = array();
-
-// Destroy the session cookie
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(session_name(), '', time() - 42000,
@@ -12,11 +8,7 @@ if (ini_get("session.use_cookies")) {
         $params["secure"], $params["httponly"]
     );
 }
-
-// Destroy the session
 session_destroy();
-
-// Redirect to login page
 header("Location: login.php");
 exit();
 ?>
@@ -36,7 +28,6 @@ exit();
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Sleek Black Transparent Modern Theme */
         :root {
             --black-primary: #0a0a0a;
             --black-secondary: #1a1a1a;
@@ -407,12 +398,10 @@ exit();
     </div>
 
     <script>
-        // Auto-redirect after 3 seconds
         setTimeout(function() {
             window.location.href = 'login.php';
         }, 3000);
 
-        // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.modern-header');
             if (window.scrollY > 50) {
