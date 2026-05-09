@@ -1,8 +1,7 @@
--- Create database
 CREATE DATABASE IF NOT EXISTS SUS;
 USE SUS;
 
--- Users table
+
 CREATE TABLE IF NOT EXISTS user_data (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Email_ID VARCHAR(255) NOT NULL UNIQUE,
@@ -11,7 +10,7 @@ CREATE TABLE IF NOT EXISTS user_data (
     Password VARCHAR(255) NOT NULL
 );
 
--- Tire data table
+
 CREATE TABLE IF NOT EXISTS tire_data (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
@@ -27,7 +26,7 @@ CREATE TABLE IF NOT EXISTS tire_data (
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES user_data(ID)
 );
--- Vehicles table
+
 CREATE TABLE IF NOT EXISTS vehicles (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
