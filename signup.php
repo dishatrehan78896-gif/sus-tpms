@@ -12,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     if (!empty($email) && !empty($username) && !empty($password) && !empty($confirm_password)) {
         if ($password === $confirm_password) {
-            // Check if email already exists
             $stmt = $conn->prepare("SELECT ID FROM user_data WHERE Email_ID = ? OR Username = ?");
             $stmt->bind_param("ss", $email, $username);
             $stmt->execute();
@@ -21,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($result->num_rows > 0) {
                 $error = "Email or username already exists!";
             } else {
-                // Use password_hash() for secure password storage
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                 $stmt = $conn->prepare("INSERT INTO user_data (Email_ID, Username, Password) VALUES (?, ?, ?)");
                 $stmt->bind_param("sss", $email, $username, $hashed_password);
@@ -57,7 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Sleek Black Transparent Modern Theme */
         :root {
             --black-primary: #0a0a0a;
             --black-secondary: #1a1a1a;
@@ -438,7 +435,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <header class="modern-header">
         <div class="container">
             <div class="header-content">
-                <!-- Modern Logo -->
                 <a href="index.php" class="logo-container">
                     <div class="logo-symbol">
                         <div style="width: 24px; height: 24px; background: var(--black-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
@@ -528,7 +524,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <script>
-        // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.modern-header');
             if (window.scrollY > 50) {
@@ -539,8 +534,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 header.style.backdropFilter = 'blur(20px) saturate(180%)';
             }
         });
-
-        // Password strength checker
         function checkPasswordStrength() {
             const password = document.getElementById('password').value;
             const strengthText = document.getElementById('passwordStrength');
@@ -571,8 +564,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             strengthText.textContent = message;
             strengthText.className = 'password-strength ' + strengthClass;
         }
-
-        // Password match checker
         function checkPasswordMatch() {
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirm_password').value;
@@ -591,13 +582,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 matchText.className = 'password-strength strength-weak';
             }
         }
-
-        // Add interactive form effects
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.querySelector('.modern-form');
             const inputs = document.querySelectorAll('.form-input');
-            
-            // Form 3D effect on mousemove
             form.addEventListener('mousemove', (e) => {
                 const rect = form.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -615,8 +602,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             form.addEventListener('mouseleave', () => {
                 form.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
             });
-
-            // Input focus effects
             inputs.forEach(input => {
                 input.addEventListener('focus', function() {
                     this.parentElement.style.transform = 'translateY(-2px)';
