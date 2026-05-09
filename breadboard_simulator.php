@@ -9,7 +9,7 @@ class BreadboardSimulator {
     }
     
     private function initializeSensors() {
-        // Initialize with realistic starting values
+        
         $this->sensorData = [
             'front_left' => [
                 'pressure' => 32.5,
@@ -49,26 +49,26 @@ class BreadboardSimulator {
     }
     
     public function readSensorData() {
-        // Simulate real sensor readings with slight variations
+        
         foreach ($this->sensorData as $position => &$data) {
-            // Simulate pressure changes (±0.3 PSI)
+            
             $pressureChange = (mt_rand(-30, 30) / 100);
             $newPressure = $data['pressure'] + $pressureChange;
             
-            // Keep pressure within safe limits (28-38 PSI)
+           
             if ($newPressure < 28.0) $newPressure = 28.0;
             if ($newPressure > 38.0) $newPressure = 38.0;
             
-            // Simulate temperature changes (±1.5°C)
+           
             $tempChange = (mt_rand(-15, 15) / 10);
             $newTemp = $data['temperature'] + $tempChange;
             
-            // Keep temperature within realistic range (20-50°C)
+            
             if ($newTemp < 20.0) $newTemp = 20.0;
             if ($newTemp > 50.0) $newTemp = 50.0;
             
-            // Simulate battery drain (very slow)
-            if (mt_rand(1, 100) === 1) { // 1% chance per read
+         
+            if (mt_rand(1, 100) === 1) { 
                 $data['battery'] = max(80, $data['battery'] - 1);
             }
             
@@ -76,9 +76,9 @@ class BreadboardSimulator {
             $data['temperature'] = round($newTemp, 1);
             $data['last_update'] = time();
             
-            // Simulate occasional sensor issues (2% chance)
+            
             if (mt_rand(1, 50) === 1) {
-                $data['pressure'] = 0.0; // Sensor error
+                $data['pressure'] = 0.0; 
             }
         }
         
@@ -109,14 +109,14 @@ class BreadboardSimulator {
     }
     
     public function simulateLowPressureAlert() {
-        // Force low pressure in one tire for testing
+        
         $tire = array_rand($this->sensorData);
         $this->sensorData[$tire]['pressure'] = 26.5;
         return "Low pressure alert simulated for " . str_replace('_', ' ', $tire);
     }
     
     public function simulateHighTemperatureAlert() {
-        // Force high temperature in one tire for testing
+        
         $tire = array_rand($this->sensorData);
         $this->sensorData[$tire]['temperature'] = 47.0;
         return "High temperature alert simulated for " . str_replace('_', ' ', $tire);
@@ -170,14 +170,14 @@ class BreadboardSimulator {
     }
     
     private function getReadingsCount() {
-        // Simulate increasing readings count
+       
         static $count = 0;
         $count++;
         return $count;
     }
 }
 
-// API Handler for Breadboard Simulator
+
 class BreadboardAPI {
     private $simulator;
     
@@ -252,14 +252,13 @@ class BreadboardAPI {
     }
 }
 
-// Standalone API server simulation
+
 if (php_sapi_name() === 'cli') {
     echo "Breadboard TPMS Simulator Running...\n";
     echo "Access endpoints via:\n";
     echo "- http://localhost/your-app/breadboard_api.php?action=get-data\n";
     echo "- http://localhost/your-app/breadboard_api.php?action=system-info\n";
 } else {
-    // Handle web request
     $api = new BreadboardAPI();
     $api->handleRequest();
 }
